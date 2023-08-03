@@ -3,53 +3,84 @@ console.log('***** Cart Functions *****');
 // We want to see how you are testing your code!!!
 
 let basket = [];
+const maxItems = 5;
 function addItem(item) {
+    if (isFull()){
+        console.log("basket is full, do not add item")
+        return false;
+    }
+    console.log('pushing',item);
     basket.push(item);
     return true;
 }// end addItem();
+
+function empty(){
+    basket = [];
+}
+
+function isFull(thing){
+    //really frustrating that creating isFull automatically calls extra tests that calls isFull behind the scenes. i.e. "Kale", undefined,
+    if (basket.length < maxItems) {
+        console.log("not full.");
+        return false;
+    }
+    console.log("full",thing);
+    return true;
+}
 
 function listItems() {
     if (basket.length === 0){
         console.log('basket is currently empty');
         return false;
     }
-    // console.log(`Full list ${basket}\nItems line by line`);
+    // console.log(`Complete list ${basket}\nItems line by line`);
     // ^THIS^ was used to test full list for clarity instead of line by line.
     for (let item of basket) {
         console.log(item);
     }
 }// end listItems
 
-function empty(){
-    basket = [];
+function removeItem(item){
+    console.log('basket:',basket,"removing", item,".");
+    
+    let index = basket.indexOf(item);
+    let removed = basket[index]
+    if (removed == item) {
+    basket.splice(index,1);
+    console.log('basket after removal:', basket);
+    return removed;
+    }
+    console.log("item not found to remove");
+    return null;
 }
 
 
 addItem('banana');
-addItem('grapes');
-addItem('pineapple');
-addItem('cheese curds');
+removeItem('cherry');
 
-listItems();
+// addItem('grapes');
+// addItem('pineapple');
+// addItem('cheese curds');
+// addItem('chicken tendies');
+// addItem('toilet paper');
 
-empty();
-listItems();
+// listItems();
 
-addItem('poptarts');
-addItem('cherry');
-addItem('pizza');
-addItem('whiskey');
-addItem('chicken');
-addItem('Doritos');
+// empty();
+// listItems();
 
-listItems();
+// addItem('poptarts');
+// addItem('cherry');
+// addItem('pizza');
+// addItem('whiskey');
+// addItem('chicken');
+// addItem('Doritos');
 
-console.log('(expect true)')
-
-
+// listItems();
 
 
 
+console.log("------------END OF MY TESTS------------------")
 
 // DO NOT MODIFY
 // Used for automated testing
