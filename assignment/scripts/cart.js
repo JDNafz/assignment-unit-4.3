@@ -18,13 +18,13 @@ function empty(){
     basket = [];
 }
 
-function isFull(thing){
+function isFull(mysteryItemBeingSubmitted){
     //really frustrating that creating isFull automatically calls extra tests that calls isFull behind the scenes. i.e. "Kale", undefined,
     if (basket.length < maxItems) {
         console.log("not full.");
         return false;
     }
-    console.log("full",thing);
+    console.log("full",mysteryItemBeingSubmitted);
     return true;
 }
 
@@ -57,14 +57,17 @@ function removeItem(item){
 
 addItem('banana');
 removeItem('cherry');
-
+console.log('should be just banana:');
+listItems();
+removeItem('banana');
+addItem('broth');
 // addItem('grapes');
 // addItem('pineapple');
 // addItem('cheese curds');
 // addItem('chicken tendies');
 // addItem('toilet paper');
 
-// listItems();
+listItems();
 
 // empty();
 // listItems();
